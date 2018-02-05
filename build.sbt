@@ -17,10 +17,16 @@ lazy val testDependencies = Seq (
 	"org.scalatest" %% "scalatest" % scalaTestVersion % "test"
 )
 
+lazy val jacksonDependencies = Seq (
+  "com.fasterxml.jackson.core" % "jackson-databind" % "2.9.4",
+  "com.fasterxml.jackson.module" %% "jackson-module-scala" % "2.9.4"
+)
+
 lazy val root = (project in file("."))
   .settings(
     libraryDependencies ++=
-        testDependencies
+        testDependencies ++
+        jacksonDependencies
   )
 
 parallelExecution in Test := false
