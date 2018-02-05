@@ -1,5 +1,7 @@
 package com.pley.main
 
-object Main extends App {
-  Console.println("Yelp Data Analysis tool")
+import com.pley.utils.Logging
+
+object Main extends App with Logging{
+  log.info("Yelp Data Analysis tool")
 }
