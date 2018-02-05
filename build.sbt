@@ -1,6 +1,8 @@
-val sparkVer = "2.1.2"
-val scalaVer = "2.12.4"
+val sparkVer = "2.2.1"
+val scalaVer = "2.11.12"
 val scalaTestVersion = "3.0.0"
+val jacksonDatabind = "2.9.4"
+val jacksonScalaModule = "2.9.4"
 
 name := "pley-analysis"
 
@@ -18,15 +20,26 @@ lazy val testDependencies = Seq (
 )
 
 lazy val jacksonDependencies = Seq (
-  "com.fasterxml.jackson.core" % "jackson-databind" % "2.9.4",
-  "com.fasterxml.jackson.module" %% "jackson-module-scala" % "2.9.4"
+  "com.fasterxml.jackson.core" % "jackson-databind" % jacksonDatabind,
+  "com.fasterxml.jackson.module" %% "jackson-module-scala" % jacksonScalaModule
+)
+
+lazy val sparkDependencies = Seq(
+  "org.apache.spark" %% "spark-core" % sparkVer % "provided",
+  "org.apache.spark" %% "spark-mllib" % sparkVer % "provided"
+)
+
+lazy val utilitiesDependencies = Seq (
+  "org.slf4j" % "slf4j-api" % "1.7.25"
 )
 
 lazy val root = (project in file("."))
   .settings(
     libraryDependencies ++=
-        testDependencies ++
-        jacksonDependencies
+      testDependencies ++
+        jacksonDependencies ++
+        sparkDependencies ++
+        utilitiesDependencies
   )
 
 parallelExecution in Test := false
