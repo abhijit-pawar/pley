@@ -1,4 +1,4 @@
-val sparkVer = "2.2.1"
+val sparkVer = "2.2.0"
 val scalaVer = "2.11.12"
 val scalaTestVersion = "3.0.0"
 val jacksonDatabind = "2.9.4"
